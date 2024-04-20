@@ -1,0 +1,67 @@
+﻿<div class="container">
+    <div class="">
+        <ul class="progressbar">
+            <li>Autores</li>
+            <li class="active">Libros</li>
+            <li>Comentarios Existentes</li>
+            <li>Nuevo Comentario</li>
+        </ul>
+    </div>
+
+    <div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("lblAutor", "Autor")
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Label("lblAutor", "Nombre del Autor Seleccionado")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="card">
+            <div class="card-body">
+                @Html.Label("lblSeleccion", "Seleccione el Libro del Autor")
+
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <tbody class="">
+                                    @*codigo estático xddd*@
+                                    <tr class="">
+                                        <td>Nombre del libro</td>
+                                        <td class="text-end"><button type="button" class="btn btn-success">Seleccionar</button></td>
+                                    </tr>
+                                    @*
+                                    @foreach (var libros in (IEnumerable<dynamic>)ViewData["listadoLibrosAutor"])
+                                    {
+                                    <tr class="">
+                                    <td>@libros.nombreautor</td>
+                                    <td class="text-end"><button type="button" class="btn btn-success">Seleccionar</button></td>
+                                    </tr>
+                                    }
+                                    *@
+
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

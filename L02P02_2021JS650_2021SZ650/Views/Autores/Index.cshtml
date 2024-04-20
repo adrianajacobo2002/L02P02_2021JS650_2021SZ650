@@ -1,0 +1,45 @@
+﻿<div class="container">
+    <div class="">
+        <ul class="progressbar">
+            <li class="active">Autores</li>
+            <li>Libros</li>
+            <li>Comentarios Existentes</li>
+            <li>Nuevo Comentario</li>
+        </ul>
+    </div>
+    
+    <div class="pt-3">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="px-2">
+                    @Html.Label("lblAutores", "Autores")
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody class="">
+                                @foreach (var autores in (IEnumerable<dynamic>)ViewData["listadoAutores"])
+                                {
+                                    <tr class="">
+                                        <td>@autores.nombreautor</td>
+                                        <td class="text-end"><button type="button" class="btn btn-success">Seleccionar</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    
+    @*
+
+    *@
+    @{
+    }
+</div>
+
