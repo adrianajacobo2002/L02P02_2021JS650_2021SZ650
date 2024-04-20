@@ -1,20 +1,22 @@
-﻿<div class="container">
+﻿<div class="pb-2">
+    <ul class="progressbar">
+        <li class="active">Autores</li>
+        <li>Libros</li>
+        <li>Comentarios Existentes</li>
+        <li>Nuevo Comentario</li>
+    </ul>
+</div>
+
+<div class="container pb-5">
     <div class="">
-        <ul class="progressbar">
-            <li class="active">Autores</li>
-            <li>Libros</li>
-            <li>Comentarios Existentes</li>
-            <li>Nuevo Comentario</li>
-        </ul>
-    </div>
-    
-    <div class="pt-3">
+        @*Card de autor*@
         <div class="card">
             <div class="card-body">
-
                 <div class="px-2">
                     @Html.Label("lblAutores", "Autores")
                 </div>
+
+                @*Card de Lista Autores*@
                 <div class="card">
                     <div class="card-body">
                         <table class="table">
@@ -30,16 +32,8 @@
                         </table>
                     </div>
                 </div>
-                
-
             </div>
         </div>
     </div>
-    
-    @*
-
-    *@
-    @{
-    }
 </div>
 
