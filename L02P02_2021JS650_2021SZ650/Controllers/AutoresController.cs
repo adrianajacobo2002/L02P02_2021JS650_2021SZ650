@@ -17,9 +17,10 @@ namespace L02P02_2021JS650_2021SZ650.Controllers
             var listadoDeAutores = (from e in _libreriaDbContext.Autores
                                     select new
                                     {
+                                        idAutor = e.Id,
                                         nombreautor = e.Autor,
                                     }).ToList();
-            ViewData["listadoAutores"] = listadoDeAutores;
+            ViewData["autores"] = listadoDeAutores;
 
             return View();
         }
