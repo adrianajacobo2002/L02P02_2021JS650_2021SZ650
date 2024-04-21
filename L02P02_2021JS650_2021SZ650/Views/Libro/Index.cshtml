@@ -16,7 +16,7 @@
                         @Html.Label("lblAutor", "Autor")
                     </div>
                     <div class="col-md-6">
-                        @Html.Label("lblAutor", "Nombre del Autor Seleccionado")
+                        @Html.Label("lblAutor", (string)ViewData["autor"])
                     </div>
                 </div>
             </div>
@@ -33,27 +33,26 @@
                         <div class="card-body">
                             <table class="table">
                                 <tbody class="">
-                                    @*codigo estático xddd*@
-                                    <tr class="">
-                                        <td>Nombre del libro</td>
-                                        <td class="text-end"><button type="button" class="btn btn-success">Seleccionar</button></td>
-                                    </tr>
-                                    @*
-                                    @foreach (var libros in (IEnumerable<dynamic>)ViewData["listadoLibrosAutor"])
+                                    @foreach (var libro in (IEnumerable<dynamic>)ViewData["libros"])
                                     {
-                                    <tr class="">
-                                    <td>@libros.nombreautor</td>
-                                    <td class="text-end"><button type="button" class="btn btn-success">Seleccionar</button></td>
-                                    </tr>
+                                        <tr class="">
+                                        <td>@libro.nombre</td>
+                                        <td class="text-end"><button type="button" class="btn btn-success">
+                                            @Html.ActionLink(
+                                                        "Seleccionar",
+                                                        "Index",
+                                                        "ComentariosLibro",
+                                                        new { id = libro.id },
+                                                        new { @class = "text-white text-decoration-none" })
+                                        </button>
+                                        </td>
+                                        </tr>
                                     }
-                                    *@
 
                                 </tbody>
                             </table>
                         </div>
-                        
                     </div>
-                    
                 </div>
 
             </div>

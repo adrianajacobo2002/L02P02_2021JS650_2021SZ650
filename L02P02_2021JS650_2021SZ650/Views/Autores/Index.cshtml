@@ -21,11 +21,20 @@
                     <div class="card-body">
                         <table class="table">
                             <tbody class="">
-                                @foreach (var autores in (IEnumerable<dynamic>)ViewData["listadoAutores"])
+                                @foreach (var autores in (IEnumerable<dynamic>)ViewData["autores"])
                                 {
                                     <tr class="">
                                         <td>@autores.nombreautor</td>
-                                        <td class="text-end"><button type="button" class="btn btn-success">Seleccionar</button></td>
+                                        <td class="text-end">
+                                            <button type="button" class="btn btn-success">
+                                                @Html.ActionLink(
+                                                    "Seleccionar",
+                                                    "Index",
+                                                    "Libro",
+                                                    new { id = autores.idAutor },
+                                                    new { @class = "text-white text-decoration-none" })
+                                            </button>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
