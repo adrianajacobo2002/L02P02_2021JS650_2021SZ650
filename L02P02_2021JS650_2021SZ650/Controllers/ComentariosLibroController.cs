@@ -58,7 +58,7 @@ namespace L02P02_2021JS650_2021SZ650.Controllers
                                }).ToList();
 
             ComentariosLibro cl = new ComentariosLibro();
-            cl.Id = comentarios[comentarios.Count() - 1].id + 1;
+            cl.Id = (_libreriaDbContext.ComentariosLibros.OrderBy(cl => cl.Id).LastOrDefault()?.Id ?? 0) + 1;
             cl.Comentarios = comment;
             cl.IdLibro = int.Parse(idLibro);
             cl.Usuario = autor;
