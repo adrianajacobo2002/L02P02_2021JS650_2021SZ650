@@ -1,4 +1,4 @@
-﻿<div class="pb-2">
+﻿<div style="padding-top:30px">
     <ul class="progressbar">
         <li>Autores</li>
         <li class="active">Libros</li>
@@ -7,56 +7,54 @@
     </ul>
 </div>
 
-<div class="container pb-5">
-    <div>
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        @Html.Label("lblAutor", "Autor")
-                    </div>
-                    <div class="col-md-6">
-                        @Html.Label("lblAutor", (string)ViewData["autor"])
-                    </div>
+<div class="my-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Autor</h5>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <div class="card">
-            <div class="card-body">
-                @Html.Label("lblSeleccion", "Seleccione el Libro del Autor")
-
-                <div>
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table">
-                                <tbody class="">
-                                    @foreach (var libro in (IEnumerable<dynamic>)ViewData["libros"])
-                                    {
-                                        <tr class="">
-                                        <td>@libro.nombre</td>
-                                        <td class="text-end"><button type="button" class="btn btn-success">
-                                            @Html.ActionLink(
-                                                        "Seleccionar",
-                                                        "Index",
-                                                        "ComentariosLibro",
-                                                        new { id = libro.id },
-                                                        new { @class = "text-white text-decoration-none" })
-                                        </button>
-                                        </td>
-                                        </tr>
-                                    }
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="col-md-6">
+                    @Html.Label("lblAutor", (string)ViewData["autor"])
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
+<div>
+    <div class="card">
+        <div class="card-body">
+            <h5>Seleccione el Libro del Autor</h5>
+
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <tbody class="">
+                                @foreach (var libro in (IEnumerable<dynamic>)ViewData["libros"])
+                                {
+                                    <tr class="">
+                                        <td>@libro.nombre</td>
+                                        <td class="text-end">
+                                            <button type="button" class="btn btn-success">
+                                                @Html.ActionLink(
+                                                         "Seleccionar",
+                                                         "Index",
+                                                         "ComentariosLibro",
+                                                         new { id = libro.id },
+                                                         new { @class = "text-white text-decoration-none" })
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
