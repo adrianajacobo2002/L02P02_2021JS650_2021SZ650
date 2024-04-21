@@ -2,8 +2,8 @@
     <ul class="progressbar">
         <li>Autores</li>
         <li>Libros</li>
-        <li class="active">Comentarios Existentes</li>
-        <li>Nuevo Comentario</li>
+        <li class="@(ViewData["disableForm"] == null ? "active" : "")">Comentarios Existentes</li>
+        <li class="@(ViewData["disableForm"] != null ? "active" : "")">Nuevo Comentario</li>
     </ul>
 </div>
 
@@ -16,13 +16,13 @@
                 </div>
                 <div class="col-md-3">
                     @*lo de estas madres no sé muy bien cómo funciona, pero lo puse por si acaso*@
-                    @Html.Label("lblAutorSelec", "Nombre del Autor Seleccionado")
+                    @Html.Label("lblAutorSelec", (string)ViewData["autor"])
                 </div>
                 <div class="col-md-3">
                     <h5>Libro</h5>
                 </div>
                 <div class="col-md-3">
-                    @Html.Label("lblLibroSelec", "Nombre del Libro Seleccionado")
+                    @Html.Label("lblLibroSelec", (string)ViewData["libro"])
                 </div>
             </div>
         </div>
@@ -34,38 +34,50 @@
             <div class="">
                 <div class="card" style="width: contain;">
                     <ul class="list-group list-group-flush">
-                        @*Ponga esta madre en un foreach así de chill pa listar los comments*@
-                        <li class="list-group-item">
-                            <p>Comentario 1</p>
-                            <small>Usuario</small>
-                            <br />
-                            <small>Fecha</small>
-                        </li>
-                       
+                        @foreach (var comentario in (IEnumerable<dynamic>)ViewData["comentarios"])
+                        {
+                            <li class="list-group-item">
+                                <p>@comentario.comentario</p>
+                                <small>@comentario.usuario</small>
+                                <br />
+                                <small>@comentario.fecha</small>
+                            </li>
+                        }                       
                     </ul>
                 </div>
             </div>
         </div>
-        @*FORM 4 INFO que va programado pq no se puede volver a maquetar*@
-        @*NO OLVIDAR*@
-        @*el text area se tiene que bloquear, y donde esta el boton se tiene que poner un texto de confirmación*@
-        @*porfi, sino ya se la sabe :P*@
-        @*TMB*@
-        @*la barra de navegación de arriba, tiene que cambiar el estado, es decir que el 4to li tiene que ser class="active"*@
         <div class="col-md-6">
-            <h5>Agregar un Comentario</h5>
-            <small>Comentario</small>
-            @Html.TextArea("Comentarios", "", new { @class = "form-control", id = "idComentarios", style = "min-height: 150px;" })
-            <div class="py-2">
-                <div class="card">
-                    <div class="card-body p-1">
-                        <button type="button" class="btn btn-success w-100">Guardar Comentario</button>
+            @using(Html.BeginForm("AddComment", "ComentariosLibro", FormMethod.Post))
+            {
+                
+            }
+            <form asp-action="AddComment">
+                <h5>Agregar un Comentario</h5>
+                <small>Comentario</small>
+                @if (ViewData["disableForm"] == null)
+                {
+                    @Html.TextArea("comment", "", new { @class = "form-control", id = "idComentarios", style = "min-height: 150px;" })
+                } else
+                {
+                    @Html.TextArea("comment", "", new { @class = "form-control", id = "idComentarios", style = "min-height: 150px;", disabled = true })
+                }
+                @Html.Hidden("id_libro", (string)ViewData["id_libro"])
+                @Html.Hidden("autor", (string)ViewData["autor"])
+                <div class="py-2">
+                    <div class="card">
+                        <div class="card-body p-1">
+                            @if (ViewData["disableForm"] == null)
+                            {
+                                <button type="submit" class="btn btn-success w-100">Guardar comentario</button>
+                            } else
+                            {
+                                <button type="submit" class="btn btn-success w-100" disabled>Comentario: Adicionado con éxito</button>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
-
-
-
