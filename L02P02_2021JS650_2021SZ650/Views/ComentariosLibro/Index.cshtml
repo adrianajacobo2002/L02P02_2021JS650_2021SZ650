@@ -1,11 +1,71 @@
-﻿<div class="container">
-    <div>
+﻿<div style="padding-top:30px">
+    <ul class="progressbar">
+        <li>Autores</li>
+        <li>Libros</li>
+        <li class="active">Comentarios Existentes</li>
+        <li>Nuevo Comentario</li>
+    </ul>
+</div>
 
+<div style="padding-top:80px">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Autor</h5>
+                </div>
+                <div class="col-md-3">
+                    @*lo de estas madres no sé muy bien cómo funciona, pero lo puse por si acaso*@
+                    @Html.Label("lblAutorSelec", "Nombre del Autor Seleccionado")
+                </div>
+                <div class="col-md-3">
+                    <h5>Libro</h5>
+                </div>
+                <div class="col-md-3">
+                    @Html.Label("lblLibroSelec", "Nombre del Libro Seleccionado")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-md-6">
+            <h5>Comentarios Existentes</h5>
+            <div class="">
+                <div class="card" style="width: contain;">
+                    <ul class="list-group list-group-flush">
+                        @*Ponga esta madre en un foreach así de chill pa listar los comments*@
+                        <li class="list-group-item">
+                            <p>Comentario 1</p>
+                            <small>Usuario</small>
+                            <br />
+                            <small>Fecha</small>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @*FORM 4 INFO que va programado pq no se puede volver a maquetar*@
+        @*NO OLVIDAR*@
+        @*el text area se tiene que bloquear, y donde esta el boton se tiene que poner un texto de confirmación*@
+        @*porfi, sino ya se la sabe :P*@
+        @*TMB*@
+        @*la barra de navegación de arriba, tiene que cambiar el estado, es decir que el 4to li tiene que ser class="active"*@
+        <div class="col-md-6">
+            <h5>Agregar un Comentario</h5>
+            <small>Comentario</small>
+            @Html.TextArea("Comentarios", "", new { @class = "form-control", id = "idComentarios", style = "min-height: 150px;" })
+            <div class="py-2">
+                <div class="card">
+                    <div class="card-body p-1">
+                        <button type="button" class="btn btn-success w-100">Guardar Comentario</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+
+
